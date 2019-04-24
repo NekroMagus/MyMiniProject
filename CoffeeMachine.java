@@ -52,6 +52,7 @@ public class CoffeeMachine {
                 else {
                     water -= 250;
                     coffeeBeans -= 16;
+                    disCups--;
                     money += 4;
                     System.out.println("I have enough resources, making you a coffee!");
                 }
@@ -65,6 +66,7 @@ public class CoffeeMachine {
                     water -= 350;
                     milk -= 75;
                     coffeeBeans -= 20;
+                    disCups--;
                     money += 7;
                     System.out.println("I have enough resources, making you a coffee!");
                 }
@@ -79,6 +81,7 @@ public class CoffeeMachine {
                     milk -= 100;
                     coffeeBeans -= 12;
                     money += 6;
+                    disCups--;
                     System.out.println("I have enough resources, making you a coffee!");
                 }
                 break;
