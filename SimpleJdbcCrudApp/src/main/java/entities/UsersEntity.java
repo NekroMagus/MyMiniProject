@@ -1,10 +1,7 @@
 package entities;
 
-import javax.persistence.*;
 import java.util.Objects;
 
-@Entity
-@Table(name = "users", schema = "db_example", catalog = "db_example")
 public class UsersEntity {
     private int id;
     private String name;
@@ -20,8 +17,6 @@ public class UsersEntity {
         this.name = name;
     }
 
-    @Id
-    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -30,8 +25,6 @@ public class UsersEntity {
         this.id = id;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
     }
