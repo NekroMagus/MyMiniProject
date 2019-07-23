@@ -8,8 +8,10 @@
 *.iml
 *.idea
 
-# out files
+
+# out and target files
 /out/*
+/target/*
 
 # BlueJ files
 *.ctxt
