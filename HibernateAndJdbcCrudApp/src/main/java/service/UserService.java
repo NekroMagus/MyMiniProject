@@ -28,7 +28,7 @@ public final class UserService {
     public void addProperties() {
         Properties properties = new Properties();
         try {
-            FileInputStream in = new FileInputStream("C:\\Users\\fli_i.LAPTOP-F81S9FK5\\IdeaProjects\\HibernateAndJdbcCrudApp\\src\\main\\resources\\factory.properties");
+            FileInputStream in = new FileInputStream("C:\\Users\\fli_i.LAPTOP-F81S9FK5\\IdeaProjects\\MyMiniProject\\HibernateAndJdbcCrudApp\\src\\main\\resources\\factory.properties");
             properties.load(in);
             if (properties.getProperty("userDao").equalsIgnoreCase("Hibernate")) {
                 dao = UserDaoFactory.createUserDaoHibernate();
