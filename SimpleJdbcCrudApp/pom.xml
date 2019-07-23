@@ -47,11 +47,5 @@
             <version>2.2.1-b03</version>
             <scope>provided</scope>
         </dependency>
-
-
-
     </dependencies>
-
-
-
 </project>
