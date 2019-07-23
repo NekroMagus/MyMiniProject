@@ -16,7 +16,7 @@ public final class DBHelper {
     private static final String LOGIN = "root";
     private static final String PASSWORD = "";
     //For JDBC
-    private static Connection connection;
+    private static  Connection connection;
     //For Hibernate
     private static Configuration configuration;
 
@@ -42,9 +42,9 @@ public final class DBHelper {
         configuration.addAnnotatedClass(UserEntity.class);
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
         configuration.setProperty("hibernate.connection.driver_class", "com.mysql.cj.jdbc.Driver");
-        configuration.setProperty("hibernate.connection.url", JDBC_URL);
-        configuration.setProperty("hibernate.connection.username", LOGIN);
-        configuration.setProperty("hibernate.connection.password", PASSWORD);
+        configuration.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/db_example?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
+        configuration.setProperty("hibernate.connection.username", "root");
+        configuration.setProperty("hibernate.connection.password", "");
         configuration.setProperty("show_sql", "false");
         configuration.setProperty("hibernate.hbm2ddl.auto", "update");
         return configuration;

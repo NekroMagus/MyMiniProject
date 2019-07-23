@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
         dao.openCurrentSessionwithTransaction();
         dao.addUser(user);
         dao.closeCurrentSessionwithTransaction();
-
     }
 
     @Override

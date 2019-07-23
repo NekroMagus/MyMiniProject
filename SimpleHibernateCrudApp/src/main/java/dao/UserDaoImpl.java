@@ -14,7 +14,6 @@ public class UserDaoImpl implements UserDao<UsersEntity, String> {
     private Session currentSession;
     private Transaction currentTransaction;
 
-
     public UserDaoImpl(){
     }
 
