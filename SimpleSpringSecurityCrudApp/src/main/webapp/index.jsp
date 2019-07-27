@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-
+<a href = "admin">admin</a>
+<a href ="users"> users</a>
 </body>
 </html>

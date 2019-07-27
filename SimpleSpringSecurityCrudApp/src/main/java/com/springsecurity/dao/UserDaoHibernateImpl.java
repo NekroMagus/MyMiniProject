@@ -16,10 +16,12 @@ public class UserDaoHibernateImpl implements DAO<User> {
 
     private Session currentSession;
     private Transaction currentTransaction;
-    private static Configuration configuration;
+    private static Configuration configuration = getConfiguration();
     private static final String JDBC_URL = "jdbc:mysql://localhost:3306/db_example?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     private static final String LOGIN = "root";
     private static final String PASSWORD = "";
+
+
 
     public void insert(User user) {
         openCurrentSessionwithTransaction();
@@ -88,7 +90,7 @@ public class UserDaoHibernateImpl implements DAO<User> {
         currentSession.close();
     }
 
-    public Configuration getConfiguration() {
+    public static Configuration getConfiguration() {
         configuration = new Configuration();
         configuration.addAnnotatedClass(User.class);
         configuration.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQLDialect");
