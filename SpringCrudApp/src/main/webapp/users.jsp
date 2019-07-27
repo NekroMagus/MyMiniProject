@@ -17,7 +17,7 @@
 </form>
 
 <h2>Delete User</h2>
-<form action="/users/delUser" method="post">
+<form method="post">
     <div><label>Delete user by id : <input type="number" name="id"/></label></div>
     <div><input type="submit" value="delete User"/></div>
 </form>

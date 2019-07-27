@@ -33,8 +33,8 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @PostMapping("delUser")
-    public String delUser(@RequestParam long id) {
+    @RequestMapping(value="{id}/delete", method=RequestMethod.GET)
+    public String delUser(@PathVariable("id") long id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }
