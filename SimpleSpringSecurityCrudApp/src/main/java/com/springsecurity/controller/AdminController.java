@@ -41,6 +41,7 @@ public class AdminController {
         User editUser = userService.findUserById(user.getId());
         editUser.setLogin(user.getLogin());
         editUser.setPassword(user.getPassword());
+        userService.updateUser(editUser);
         return "redirect:/admin";
     }
 }
