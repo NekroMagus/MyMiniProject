@@ -30,14 +30,17 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/admin/{id}/delete" , method = RequestMethod.GET)
-    public String deleteUser(@PathVariable("id") Long id){
+    @RequestMapping(value = "{id}/delete" , method = RequestMethod.GET)
+    public String deleteUser(@PathVariable("id") long id){
         userService.deleteUserById(id);
         return "redirect:/admin";
     }
 
     @PostMapping("updateUser")
     public String updateUser(@ModelAttribute("user") User user){
+        User editUser = userService.findUserById(user.getId());
+        editUser.setLogin(user.getLogin());
+        editUser.setPassword(user.getPassword());
         return "redirect:/admin";
     }
 }

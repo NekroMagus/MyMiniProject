@@ -24,7 +24,7 @@
 </form>
 
 <h2>Update User</h2>
-<form action="/users/updateUser" method="post">
+<form action="/admin/updateUser" method="post">
     <div><label>Enter id User: <input type="number" name="id"/></label></div>
     <div><label>Enter new Login : <input type="text" name="login"/></label></div>
     <div><label>Enter new Password : <input type="password" name="password"/></label></div>

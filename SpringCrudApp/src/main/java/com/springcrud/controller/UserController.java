@@ -27,20 +27,20 @@ public class UserController {
 
 
     @PostMapping("addUser")
-    public String addUser(@RequestParam String login,@RequestParam String password) {
-        User user = new User(login,password);
+    public String addUser(@RequestParam String login, @RequestParam String password) {
+        User user = new User(login, password);
         userService.addUser(user);
         return "redirect:/users";
     }
 
-    @RequestMapping(value="{id}/delete", method=RequestMethod.GET)
+    @RequestMapping(value = "{id}/delete", method = RequestMethod.GET)
     public String delUser(@PathVariable("id") long id) {
         userService.deleteUser(id);
         return "redirect:/users";
     }
 
     @PostMapping("updateUser")
-    public String updateUser(@ModelAttribute("user") User user){
+    public String updateUser(@ModelAttribute("user") User user) {
         User editUser = userService.findUserById(user.getId());
         editUser.setLogin(user.getLogin());
         editUser.setPassword(user.getPassword());
