@@ -26,7 +26,7 @@
 <form action="/users/updateUser" method="post">
     <div><label>Enter id User: <input type="number" name="id"/></label></div>
     <div><label>Enter new Login : <input type="text" name="login"/></label></div>
-    <div><label>Enter new Password : <input type="password" , name="password"/></label></div>
+    <div><label>Enter new Password : <input type="password" name="password"/></label></div>
     <div><input type="submit" value="update User"/></div>
 </form>
 </body>
