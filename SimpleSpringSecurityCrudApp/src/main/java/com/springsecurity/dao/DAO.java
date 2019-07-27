@@ -12,5 +12,7 @@ public interface DAO<T> {
 
     T findById(Long id);
 
+    T findByLogin(String login);
+
     List<T> findAll();
 }

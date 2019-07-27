@@ -2,7 +2,6 @@ package com.springcrud.controller;
 
 import com.springcrud.model.User;
 import com.springcrud.service.SpringUserService;
-import com.springcrud.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -12,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/users")
 public class UserController {
 
-    private UserService userService;
+    private SpringUserService userService;
 
     @Autowired
-    public void setUserService(UserService userService) {
+    public void setUserService(SpringUserService userService) {
         this.userService = userService;
     }
 

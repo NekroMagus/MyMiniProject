@@ -12,8 +12,8 @@
 <form action="/admin/addUser" method="post">
     <div><label> User Login : <input type="text" name="login"/> </label></div>
     <div><label> User Password : <input type="password" name="password"/> </label></div>
-    <div><label> User Role : <input name="role" , type="radio" , value="user" checked/>user</label>
-        <label><input name="role" , type="radio" , value="admin"/>admin</label></div>
+    <div><label> User Role : <input name="role"  type="radio" value="user" checked/>user</label>
+        <label><input name="role"  type="radio"  value="admin"/>admin</label></div>
     <div><input type="submit" value="add User"/></div>
 </form>
 

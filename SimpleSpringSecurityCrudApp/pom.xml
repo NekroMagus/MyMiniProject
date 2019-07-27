@@ -8,17 +8,6 @@
     <artifactId>simple-security-app</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
     <packaging>war</packaging>
 
     <properties>
@@ -136,21 +125,32 @@
             <version>1.2.9</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>5.1.8.RELEASE</version>
+            <version>5.1.5.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>5.1.8.RELEASE</version>
+            <version>5.1.5.RELEASE</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>5.1.8.RELEASE</version>
+            <version>5.1.5.RELEASE</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-taglibs -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>5.1.5.RELEASE</version>
+        </dependency>
+
     </dependencies>
 </project>

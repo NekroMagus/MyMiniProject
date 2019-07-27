@@ -49,6 +49,13 @@ public class UserDaoHibernateImpl implements DAO<User> {
         return user;
     }
 
+    public User findByLogin(String login) {
+        openCurrentSession();
+        User user = (User) getCurrentSession().get(User.class, login);
+        closeCurrentSession();
+        return user;
+    }
+
     public List<User> findAll() {
         openCurrentSession();
         List<User> list = getCurrentSession().createQuery("from User").list();

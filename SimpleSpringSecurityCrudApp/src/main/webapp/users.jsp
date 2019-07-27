@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-
+<form action="/logout" method = "post">
+    <input type ="submit" value ="Sign Out  "/>
+</form>
 </body>
 </html>

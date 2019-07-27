@@ -8,31 +8,29 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Service
+public class SpringUserServiceImpl implements SpringUserService {
 
-public class SpringUserServiceImpl implements SpringUserService{
+    private SpringDataDao dao;
 
-    private final SpringDataDao dao;
-
+    @Autowired
     public SpringUserServiceImpl(SpringDataDao dao) {
         this.dao = dao;
     }
 
     @Transactional
     public void addUser(User user) {
-        dao.save(user);
+        dao.saveAndFlush(user);
     }
 
     @Transactional
     public void deleteUser(long id) {
-        dao.delete(findUserById(id));
+        dao.deleteById(id);
     }
 
     @Transactional
     public void updateUser(User user) {
-        User us = dao.findById(user.getId()).get();
-        if(us != null) {
-            dao.save(us);
-        }
+        dao.saveAndFlush(user);
     }
 
     @Transactional

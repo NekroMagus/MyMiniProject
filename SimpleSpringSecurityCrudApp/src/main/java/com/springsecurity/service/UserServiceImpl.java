@@ -35,6 +35,10 @@ public class UserServiceImpl implements UserService{
         return (User) dao.findById(id);
     }
     @Transactional
+    public User findUserByLogin(String login) {
+        return (User) dao.findByLogin(login);
+    }
+    @Transactional
     public List<User> findAllUsers() {
         return dao.findAll();
     }
