@@ -1,7 +1,9 @@
 package com.springsecurity.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller("/admin")
+@Controller
+@RequestMapping("/admin")
 public class AdminController {
 }
