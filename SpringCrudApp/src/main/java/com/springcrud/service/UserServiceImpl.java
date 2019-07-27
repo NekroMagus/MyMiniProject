@@ -2,16 +2,18 @@ package com.springcrud.service;
 
 import com.springcrud.dao.UserDaoHibernate;
 import com.springcrud.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-//@Service
+@Service
 public class UserServiceImpl implements UserService {
 
     private final UserDaoHibernate dao;
 
-    // @Autowired
+    @Autowired
     public UserServiceImpl(UserDaoHibernate dao) {
         this.dao = dao;
     }
