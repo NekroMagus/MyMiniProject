@@ -5,6 +5,7 @@ import com.simple.security.service.UserServiceImpl;
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -26,6 +27,7 @@ import java.util.Properties;
 @PropertySource("classpath:application.properties")
 @EnableJpaRepositories("com.simple.security.dao")
 @EnableTransactionManagement
+@Import(SecurityConfig.class)
 public class WebConfig implements WebMvcConfigurer {
 
     private static final String DB_DRIVER = "db.driver";
@@ -85,7 +87,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public UserService userService(){
+    public UserService userService() {
         return new UserServiceImpl();
     }
 }

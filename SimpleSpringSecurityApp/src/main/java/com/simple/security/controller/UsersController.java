@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class UsersController {
 
     @GetMapping("/users")
-    public String usersPage(){
+    public String usersPage() {
         return "users";
     }
 }

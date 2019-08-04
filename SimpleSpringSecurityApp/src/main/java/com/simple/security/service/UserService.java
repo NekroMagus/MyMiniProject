@@ -12,6 +12,10 @@ public interface UserService {
 
     void deleteUser(long id);
 
+    public User findUserById(Long id);
+
+    User findUserByLogin(String login);
+
     List<User> findAll();
 
 }

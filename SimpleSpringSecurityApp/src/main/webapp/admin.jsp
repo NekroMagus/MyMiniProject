@@ -1,5 +1,6 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page session="true"%>
 <html>
 <head>
     <title>Title</title>
@@ -13,7 +14,7 @@
     <div><label> User Login : <input type="text" name="login"/> </label></div>
     <div><label> User Password : <input type="password" name="password"/> </label></div>
     <div><label> User Role : <input name="role"  type="radio" value="user" checked/>user</label>
-        <label><input name="role"  type="radio"  value="admin"/>admin</label></div>
+        <label><input name="role"  type="radio" value="admin"/>admin</label></div>
     <div><input type="submit" value="add User"/></div>
 </form>
 
@@ -30,5 +31,8 @@
     <div><label>Enter new Password : <input type="password" name="password"/></label></div>
     <div><input type="submit" value="update User"/></div>
 </form>
+<div><a href ="login">Sign In</a></div>
+<div><a href ="index">Home page</a></div>
+<div><a href ="users">Users page</a></div>
 </body>
 </html>
