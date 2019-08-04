@@ -1,21 +1,17 @@
 package com.simple.security.service;
 
-import com.simple.security.dao.UserDao;
 import com.simple.security.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    private UserDao dao;
+    void addUser(User user);
 
-    public void addUser(User user){dao.save(user);}
+    void updateUser(User user);
 
-    public void updateUser(User user) {dao.save(user);}
+    void deleteUser(long id);
 
-    public void deleteUser(long id){dao.delete(dao.findById(id).get());}
+    List<User> findAll();
 
-    public List<User> findAll() {return dao.findAll();}
 }
