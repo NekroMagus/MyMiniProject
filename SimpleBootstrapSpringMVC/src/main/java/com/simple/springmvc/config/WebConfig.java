@@ -71,7 +71,7 @@ public class WebConfig implements WebMvcConfigurer {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        factoryBean.setPackagesToScan(environment.getRequiredProperty("db.entitymanager.to.scan"));
+        factoryBean.setPackagesToScan(environment.getRequiredProperty("db.entitymanager.packages.to.scan"));
         factoryBean.setJpaProperties(getProperties());
         return factoryBean;
     }
