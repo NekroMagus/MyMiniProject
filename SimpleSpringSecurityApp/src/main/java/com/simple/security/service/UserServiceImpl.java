@@ -3,6 +3,7 @@ package com.simple.security.service;
 import com.simple.security.dao.UserDao;
 import com.simple.security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,7 +14,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserDao dao;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         dao.save(user);
     }
 

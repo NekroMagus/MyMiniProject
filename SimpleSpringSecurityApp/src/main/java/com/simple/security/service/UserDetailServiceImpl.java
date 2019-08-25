@@ -1,5 +1,6 @@
 package com.simple.security.service;
 
+import com.simple.security.model.Role;
 import com.simple.security.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -23,10 +24,8 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userService.findUserByLogin(username);
-
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().name()));
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        return new org.springframework.security.core.userdetails.User(user.getLogin(), encoder.encode(user.getPassword()), grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getLogin(),user.getPassword(), grantedAuthorities);
     }
 }
