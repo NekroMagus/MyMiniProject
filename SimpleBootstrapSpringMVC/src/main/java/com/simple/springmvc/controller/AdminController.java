@@ -15,25 +15,25 @@ public class AdminController {
     private UserService userService;
 
     @GetMapping
-    public String getAllUsers(Model model){
+    public String getAllUsers(Model model) {
         model.addAttribute("users", userService.getAllUsers());
         return "admin";
     }
 
     @PostMapping("/addUser")
-    public String addUser(User user){
+    public String addUser(User user) {
         userService.addUser(user);
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "{id}/delete" ,method = RequestMethod.GET)
+    @RequestMapping(value = "{id}/delete", method = RequestMethod.GET)
     public String deleteUser(@PathVariable long id) {
         userService.deleteUserById(id);
         return "redirect:/admin";
     }
 
     @PostMapping("/updateUser")
-    public String updateUser(@ModelAttribute("user") User user){
+    public String updateUser(@ModelAttribute("user") User user) {
         User userUpd = new User();
         userUpd.setLogin(user.getLogin());
         userUpd.setPassword(user.getPassword());

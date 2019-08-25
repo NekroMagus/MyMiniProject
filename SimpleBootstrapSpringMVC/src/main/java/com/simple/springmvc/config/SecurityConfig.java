@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/","/registration").permitAll()
+                .antMatchers("/", "/registration").permitAll()
                 .antMatchers("/").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
@@ -41,12 +41,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder getPasswordEncoder(){
+    public PasswordEncoder getPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public UserDetailsService getDetailsService(){
+    public UserDetailsService getDetailsService() {
         return new UserDetailsServiceImpl();
     }
 }

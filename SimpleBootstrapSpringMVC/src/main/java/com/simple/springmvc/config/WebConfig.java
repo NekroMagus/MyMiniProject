@@ -1,6 +1,5 @@
 package com.simple.springmvc.config;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import com.simple.springmvc.service.UserService;
 import com.simple.springmvc.service.UserServiceImpl;
 import org.hibernate.jpa.HibernatePersistenceProvider;
@@ -34,7 +33,7 @@ public class WebConfig implements WebMvcConfigurer {
     private static final String DB_DRIVER = "db.driver";
     private static final String DB_URL = "db.url";
     private static final String DB_LOGIN = "db.login";
-    private static final String DB_PASSWORD= "db.password";
+    private static final String DB_PASSWORD = "db.password";
 
     private static final String PROP_HIBERNATE_DIALECT = "db.hibernate.dialect";
     private static final String PROP_HIBERNATE_SHOW_SQL = "db.hibernate.show_sql";
@@ -44,7 +43,7 @@ public class WebConfig implements WebMvcConfigurer {
     private Environment environment;
 
     @Bean
-    public UrlBasedViewResolver setupViewResolver(){
+    public UrlBasedViewResolver setupViewResolver() {
         UrlBasedViewResolver resolver = new UrlBasedViewResolver();
         resolver.setSuffix(".jsp");
         resolver.setViewClass(JstlView.class);
@@ -52,12 +51,12 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public UserService getUserService(){
+    public UserService getUserService() {
         return new UserServiceImpl();
     }
 
     @Bean
-    public DataSource getDataSource(){
+    public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(DB_DRIVER);
         dataSource.setUrl(DB_URL);
@@ -67,7 +66,7 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(){
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
@@ -77,13 +76,13 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
     @Bean
-    public JpaTransactionManager transactionManager(){
-        JpaTransactionManager jpaTransactionManager =new JpaTransactionManager();
+    public JpaTransactionManager transactionManager() {
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
         return jpaTransactionManager;
     }
 
-    private Properties getProperties(){
+    private Properties getProperties() {
         Properties properties = new Properties();
         properties.setProperty(PROP_HIBERNATE_DIALECT, environment.getProperty(PROP_HIBERNATE_DIALECT));
         properties.setProperty(PROP_HIBERNATE_HBM2DLL, environment.getProperty(PROP_HIBERNATE_HBM2DLL));
