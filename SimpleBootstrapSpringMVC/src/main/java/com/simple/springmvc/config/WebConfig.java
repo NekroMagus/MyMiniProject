@@ -14,6 +14,7 @@ import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
@@ -40,7 +41,7 @@ public class WebConfig implements WebMvcConfigurer {
     private static final String PROP_HIBERNATE_HBM2DLL = "db.hibernate.hbm2dll.auto";
 
     @Resource
-    private Environment environment;
+    private Environment env;
 
     @Bean
     public UrlBasedViewResolver setupViewResolver() {
@@ -50,27 +51,33 @@ public class WebConfig implements WebMvcConfigurer {
         return resolver;
     }
 
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**")
+                .addResourceLocations("classpath:/static/");
+    }
+
     @Bean
-    public UserService getUserService() {
+    public UserService userService() {
         return new UserServiceImpl();
     }
 
     @Bean
     public DataSource getDataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName(DB_DRIVER);
-        dataSource.setUrl(DB_URL);
-        dataSource.setUsername(DB_LOGIN);
-        dataSource.setPassword(DB_PASSWORD);
+        dataSource.setDriverClassName(env.getRequiredProperty(DB_DRIVER));
+        dataSource.setUrl(env.getRequiredProperty(DB_URL));
+        dataSource.setUsername(env.getRequiredProperty(DB_LOGIN));
+        dataSource.setPassword(env.getRequiredProperty(DB_PASSWORD));
         return dataSource;
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
         factoryBean.setDataSource(getDataSource());
         factoryBean.setPersistenceProviderClass(HibernatePersistenceProvider.class);
-        factoryBean.setPackagesToScan(environment.getRequiredProperty("db.entitymanager.packages.to.scan"));
+        factoryBean.setPackagesToScan(env.getRequiredProperty("db.entitymanager.packages.to.scan"));
         factoryBean.setJpaProperties(getProperties());
         return factoryBean;
     }
@@ -78,15 +85,15 @@ public class WebConfig implements WebMvcConfigurer {
     @Bean
     public JpaTransactionManager transactionManager() {
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
-        jpaTransactionManager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
+        jpaTransactionManager.setEntityManagerFactory(entityManagerFactory().getObject());
         return jpaTransactionManager;
     }
 
     private Properties getProperties() {
         Properties properties = new Properties();
-        properties.setProperty(PROP_HIBERNATE_DIALECT, environment.getProperty(PROP_HIBERNATE_DIALECT));
-        properties.setProperty(PROP_HIBERNATE_HBM2DLL, environment.getProperty(PROP_HIBERNATE_HBM2DLL));
-        properties.setProperty(PROP_HIBERNATE_SHOW_SQL, environment.getProperty(PROP_HIBERNATE_SHOW_SQL));
+        properties.setProperty(PROP_HIBERNATE_DIALECT, env.getProperty(PROP_HIBERNATE_DIALECT));
+        properties.setProperty(PROP_HIBERNATE_HBM2DLL, env.getProperty(PROP_HIBERNATE_HBM2DLL));
+        properties.setProperty(PROP_HIBERNATE_SHOW_SQL, env.getProperty(PROP_HIBERNATE_SHOW_SQL));
         return properties;
     }
 }

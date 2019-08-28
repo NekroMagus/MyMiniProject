@@ -17,7 +17,7 @@ public class StartupSpring {
     @EventListener(ContextRefreshedEvent.class)
     void contextRefreshedEvent() {
         User user = userService.findUserByLogin("admin");
-        if(user == null){
+        if (user == null) {
             user = new User("admin", "admin");
             user.setRole(Role.ADMIN);
             userService.addUser(user);

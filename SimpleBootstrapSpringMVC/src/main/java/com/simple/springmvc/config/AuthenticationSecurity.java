@@ -16,10 +16,12 @@ import java.util.Collection;
 public class AuthenticationSecurity implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        Collection<? extends GrantedAuthority> roles = authentication.getAuthorities();
-        if (roles.contains(new SimpleGrantedAuthority("ADMIN"))) {
+        Collection<? extends GrantedAuthority> grantedAuthorities = authentication.getAuthorities();
+
+        if(grantedAuthorities.contains(new SimpleGrantedAuthority("ADMIN"))) {
             response.sendRedirect("/admin");
-        } else if (roles.contains(new SimpleGrantedAuthority("USER"))) {
+        }
+        else if(grantedAuthorities.contains(new SimpleGrantedAuthority("USER"))) {
             response.sendRedirect("/users");
         }
     }

@@ -18,10 +18,9 @@ public class AuthenticationSecurity implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         Collection<? extends GrantedAuthority> grantedAuthorities = authentication.getAuthorities();
 
-        if(grantedAuthorities.contains(new SimpleGrantedAuthority("ADMIN"))) {
+        if (grantedAuthorities.contains(new SimpleGrantedAuthority("ADMIN"))) {
             response.sendRedirect("/admin");
-        }
-        else if(grantedAuthorities.contains(new SimpleGrantedAuthority("USER"))) {
+        } else if (grantedAuthorities.contains(new SimpleGrantedAuthority("USER"))) {
             response.sendRedirect("/users");
         }
     }
