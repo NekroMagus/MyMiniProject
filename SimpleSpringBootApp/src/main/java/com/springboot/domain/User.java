@@ -12,8 +12,6 @@ import java.util.Set;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "spring_users")
 public class User implements UserDetails {
 
@@ -40,6 +38,23 @@ public class User implements UserDetails {
             inverseJoinColumns = {@JoinColumn(name = "role_id")}
     )
     private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(String login, String email, String password) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String login, String email, String password, boolean active, Set<Role> roles) {
+        this.login = login;
+        this.email = email;
+        this.password = password;
+        this.active = active;
+        this.roles = roles;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

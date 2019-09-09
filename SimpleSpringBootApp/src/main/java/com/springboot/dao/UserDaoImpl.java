@@ -30,12 +30,7 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        User updUser = em.find(User.class, user.getId());
-        updUser.setLogin(user.getLogin());
-        updUser.setEmail(user.getEmail());
-        updUser.setPassword(user.getPassword());
-        updUser.setRoles(user.getRoles());
-        em.merge(updUser);
+        em.merge(user);
         em.getTransaction().commit();
         em.close();
     }
