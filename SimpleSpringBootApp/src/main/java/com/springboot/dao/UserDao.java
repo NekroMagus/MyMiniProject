@@ -4,7 +4,7 @@ import com.springboot.domain.User;
 
 import java.util.List;
 
-public interface UserDao{
+public interface UserDao {
     void save(User user);
 
     void updateUser(User user);

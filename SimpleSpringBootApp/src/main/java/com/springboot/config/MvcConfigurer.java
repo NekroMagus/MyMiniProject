@@ -1,8 +1,5 @@
 package com.springboot.config;
 
-import com.springboot.service.RoleService;
-import com.springboot.service.RoleServiceImpl;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

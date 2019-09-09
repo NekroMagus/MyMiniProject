@@ -62,7 +62,7 @@ public class UserDaoImpl implements UserDao {
     public User findByLogin(String login) {
         EntityManager em = entityManagerFactory.createEntityManager();
         User user = (User) em.createQuery("SELECT u FROM User u where u.login=:login")
-                .setParameter("login",login)
+                .setParameter("login", login)
                 .getSingleResult();
         return user;
     }

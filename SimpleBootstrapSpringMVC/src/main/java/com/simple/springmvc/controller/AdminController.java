@@ -1,5 +1,6 @@
 package com.simple.springmvc.controller;
 
+import com.simple.springmvc.model.Role;
 import com.simple.springmvc.model.User;
 import com.simple.springmvc.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,9 +35,10 @@ public class AdminController {
 
     @PostMapping("/updateUser")
     public String updateUser(@ModelAttribute("user") User user) {
-        User userUpd = new User();
+        User userUpd = userService.findUserById(user.getId());
         userUpd.setLogin(user.getLogin());
         userUpd.setPassword(user.getPassword());
+        userUpd.setRole(Role.ADMIN);
         userService.updateUser(userUpd);
         return "redirect:/admin";
     }

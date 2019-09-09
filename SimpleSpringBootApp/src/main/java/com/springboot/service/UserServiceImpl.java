@@ -12,10 +12,10 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private  UserDao userDao;
+    private UserDao userDao;
 
     @Autowired
-    private  PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public void saveUser(User user) {
@@ -40,7 +40,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(Long id) {return userDao.findById(id);}
+    public User findById(Long id) {
+        return userDao.findById(id);
+    }
 
     @Override
     public List<User> findAll() {
