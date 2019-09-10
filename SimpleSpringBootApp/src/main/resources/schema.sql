@@ -26,5 +26,3 @@ CREATE TABLE spring_users
 INSERT INTO roles (role_id, role) VALUES (1,'ADMIN');
 
 INSERT INTO roles (role_id, role) VALUES (2, 'USER');
-
-INSERT INTO spring_users (user_id, login, email, password, active) values(1,'admin','admin','admin',false);
