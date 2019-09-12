@@ -66,12 +66,12 @@
                     <div class="row">
                         <div class="col-xs-4 col-xs-offset-5"><label>Role</label></div>
                         <div  class="col-xs-4 col-xs-offset-4">
+                            <!--/*@thymesVar id="roles" type="com.bootstrap.springboot.domain.Role"*/-->
+                            <th:block th:each="roles : ${roles}">
                             <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox1" name="roles" value="ADMIN"> ADMIN
+                                <input type="checkbox" id="inlineCheckbox1" th:text="${roles.role}" th:name="role.name" th:value="${roles.role}">
                             </label>
-                            <label class="checkbox-inline">
-                                <input type="checkbox" id="inlineCheckbox2" name="roles" value="USER"> USER
-                            </label>
+                            </th:block>
                         </div>
                     </div>
                     <div class="row">
