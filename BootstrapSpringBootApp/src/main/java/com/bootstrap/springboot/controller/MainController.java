@@ -12,4 +12,7 @@ public class MainController {
     public String getMainPage() {
         return "index";
     }
+
+    @GetMapping("/index")
+    public String getIngexPage() {return "insex";}
 }

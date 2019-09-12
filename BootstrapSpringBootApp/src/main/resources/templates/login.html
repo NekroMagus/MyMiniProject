@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <div th:replace="fragments/head :: head"/>
+  <link rel="stylesheet" href="/static/loginpage.css"/>
     <title>Title</title>
 </head>
+
 <body>
-<div>
-    <form action="/login" method="post">
-        <h2>Sign in</h2>
-        <input type="text" name="username" placeholder="login" required autofocus>
-        <input type="password" name="password" placeholder="password" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+<div class="container">
+    <form action="/login" method="post" class="form-signin">
+        <h3 mb-3 font-weight-normal>Please sign in</h3>
+        <input class="form-control" type="text" name="username" placeholder="Email address" required autofocus>
+        <input class="form-control" type="password" name="password" placeholder="password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
     </form>
-    <div><a href = "admin">Admin page</a></div>
-    <div><a href ="users">Users page</a></div>
-    <div><a href ="/">Home page</a></div>
 </div>
 </body>
 </html>

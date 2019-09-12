@@ -23,7 +23,7 @@ public class AdminController {
     private RoleService roleService;
 
     @GetMapping
-    public String getAdminpage(Model model)
+    public String getAdminPage(Model model)
     {
         model.addAttribute("users", userService.findAllUsers());
         return "admin";
