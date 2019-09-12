@@ -25,22 +25,13 @@ public class AdminController {
     @GetMapping
     public String getAdminPage(Model model)
     {
+        model.addAttribute("roles", roleService.);
         model.addAttribute("users", userService.findAllUsers());
         return "admin";
     }
 
     @PostMapping("/addUser")
-    public String addUser(@RequestParam String login, @RequestParam String email,
-                          @RequestParam String password, @RequestParam(value = "roles") String[] roles) {
-        User user = new User();
-        user.setLogin(login);
-        user.setPassword(password);
-        user.setEmail(email);
-        Set<Role> roleUser = new HashSet<>();
-        for (int i = 0; i < roles.length; i++) {
-            roleUser.add(roleService.findRoleByName(roles[i]));
-        }
-        user.setRoles(roleUser);
+    public String addUser(@ModelAttribute("user")User user) {
         userService.addUser(user);
         return "redirect:/admin";
     }
