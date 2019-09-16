@@ -1,4 +1,6 @@
-$('#myModal').on('shown.bs.modal', function () {
-    $('#myInput').focus()
-});
-
+function showFunctionModal(id) {
+    $(document).ready(function () {
+        $('.modal3').modal();
+        $('#ids').val(id)
+    })
+};
