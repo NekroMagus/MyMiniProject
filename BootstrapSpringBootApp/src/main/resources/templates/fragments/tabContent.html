@@ -27,14 +27,15 @@
                         <td th:utext="${user.password}"></td>
                         <td th:utext="${user.email}"></td>
                         <td>                    <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-info btn-lg"  data-toggle="modal"
-                                    data-target="#modal3" th:onclick="'javascript:showFunctionModal(\'' + ${user.id} +'\');'">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal"
+                                    th:attr="data-target='#myModal'+${user.id}">
                                 Edit
                             </button>
                         </td>
                     </tr>
                     <!-- Modal -->
-                    <div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal fade" th:attr="id='myModal'+${user.id}" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -42,40 +43,49 @@
                                             aria-label="Close"><span
                                             aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title" id="myModalLabel" th:utext="|Edit user ${user.login}|">Edit user</h4>
+                                    <h4 class="modal-title" id="myModalLabel" th:utext="|Edit user ${user.login}|">Edit
+                                        user</h4>
                                 </div>
                                 <form action="/admin/updateUser" method="post">
                                     <div class="modal-body">
 
 
-                                        <div class="col-md col-md-offset-4"><label>ID<input class="form-control"
-                                                                                            type="text" name="id"
-                                                                                            th:value="${user.id}"
-                                                                                            disabled
+                                        <div class="col-md col-md-offset-4"><label for="disabledTextInput">ID<input
+                                                id="disabledTextInput" class="form-control"
+                                                type="text" name="id"
+                                                th:value="${user.id}"
+                                                readonly
                                         ></label></div>
                                         <div class="col-md col-md-offset-4"><label>Email<input class="form-control"
                                                                                                type="text"
-                                        th:value="${user.email}"/></label>
+                                                                                               name="email"
+                                                                                               th:value="${user.email}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Login<input class="form-control"
                                                                                                type="text"
-                                                                                               name="login" th:value="${user.login}"/></label>
+                                                                                               name="login"
+                                                                                               th:value="${user.login}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Password<input
                                                 class="form-control"
                                                 type="password"
                                                 name="password" th:value="${user.password}"/></label>
                                         </div>
-                                        <div class="col-md col-md-offset-4"><label>Role<input class="form-control"
-                                                                                              type="text"/></label>
+                                        <div class="col-md-5 col-md-offset-4"><label>Role</label>
+                                            <select class="form-control" multiple size="2">
+                                                <th:block th:each="rol:${role}">
+                                                        <option th:text="${rol.name}">ADMIN</option>
+                                                </th:block>
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="modal-footer">
+                                        <div class="row">
+                                    <div class="modal-footer col-md-4 col-md-offset-7">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close
                                         </button>
                                         <button type="submit" class="btn btn-primary">Edit user</button>
                                     </div>
+                                        </div>
                                 </form>
                             </div>
                         </div>
@@ -111,14 +121,15 @@
                     </div>
                     <div class="row">
                         <div class="col-xs-4 col-xs-offset-5"><label>Role</label></div>
-                        <div class="col-xs-4 col-xs-offset-4">
-                            <!--/*@thymesVar id="roles" type="com.bootstrap.springboot.domain.Role"*/-->
-                            <th:block th:each="roles : ${roles}">
-                                <label class="checkbox-inline">
-                                    <input type="checkbox" id="inlineCheckbox1" th:text="${roles.role}"
-                                           name="roles.name" th:value="${roles.role}">
-                                </label>
-                            </th:block>
+                        <div class="col-xs-3 col-xs-offset-4">
+<!--                            <select class="form-control" multiple size="2">-->
+<!--                                <th:block th:each="rol:${role}">-->
+<!--                                    <p th:object="${rol}">-->
+<!--                                    <option th:field="*{name}" th:text="${rol.name}">ADMIN</option>-->
+<!--                                    </p>-->
+<!--                                </th:block>-->
+<!--                            </select>-->
+
                         </div>
                     </div>
                     <div class="row">
