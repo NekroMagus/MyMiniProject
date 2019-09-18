@@ -1,6 +1,5 @@
 package com.bootstrap.springboot.controller;
 
-import com.bootstrap.springboot.domain.Role;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,11 +20,11 @@ public class UserController {
     public String getUserPage(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         Set<GrantedAuthority> roles = new HashSet<>();
-        for(GrantedAuthority ga : auth.getAuthorities()) {
+        for (GrantedAuthority ga : auth.getAuthorities()) {
             roles.add(new SimpleGrantedAuthority(ga.getAuthority()));
         }
-        model.addAttribute("login",auth.getName());
-        model.addAttribute("role",roles);
+        model.addAttribute("login", auth.getName());
+        model.addAttribute("role", roles);
         return "user";
     }
 }

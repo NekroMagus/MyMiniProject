@@ -40,7 +40,7 @@ public class UserDaoImpl implements UserDao {
     public void removeById(Long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        em.remove(em.find(User.class,id));
+        em.remove(em.find(User.class, id));
         em.getTransaction().commit();
         em.close();
     }
@@ -49,7 +49,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public User findUserById(Long id) {
         EntityManager em = entityManagerFactory.createEntityManager();
-        return em.find(User.class,id);
+        return em.find(User.class, id);
     }
 
     @Transactional(readOnly = true)
@@ -57,8 +57,8 @@ public class UserDaoImpl implements UserDao {
     public User findUserByLogin(String login) {
         EntityManager em = entityManagerFactory.createEntityManager();
         User user = (User) em.createQuery("SELECT u from User u where u.login=:login")
-        .setParameter("login",login)
-        .getSingleResult();
+                .setParameter("login", login)
+                .getSingleResult();
         return user;
     }
 
@@ -67,7 +67,7 @@ public class UserDaoImpl implements UserDao {
     public List<User> findAllUsers() {
         EntityManager em = entityManagerFactory.createEntityManager();
         List<User> userList = em.createQuery("SELECT u from User u", User.class)
-        .getResultList();
+                .getResultList();
         return userList;
     }
 }

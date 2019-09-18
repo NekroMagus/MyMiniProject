@@ -6,7 +6,7 @@ import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RoleConverter implements Converter<String,Role> {
+public class RoleConverter implements Converter<String, Role> {
 
     @Autowired
     private RoleService roleService;

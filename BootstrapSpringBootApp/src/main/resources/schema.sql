@@ -1,7 +1,7 @@
 CREATE TABLE users_roles
 (
-    user_id BIGINT  NOT NULL,
-    role_id BIGINT  NOT NULL,
+    user_id BIGINT NOT NULL,
+    role_id BIGINT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES spring_users (user_id),
     FOREIGN KEY (role_id) REFERENCES roles (role_id)
 );
@@ -23,6 +23,8 @@ CREATE TABLE spring_users
 );
 
 
-INSERT INTO roles (role_id, role) VALUES (1,'ADMIN');
+INSERT INTO roles (role_id, role)
+VALUES (1, 'ADMIN');
 
-INSERT INTO roles (role_id, role) VALUES (2, 'USER');
+INSERT INTO roles (role_id, role)
+VALUES (2, 'USER');
