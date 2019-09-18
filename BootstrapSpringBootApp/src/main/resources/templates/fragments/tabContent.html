@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                 <!--/*@thymesVar id="users" type="com.bootstrap.springboot.controller.AdminController"*/-->
-                <th:block th:each="user : ${users}">
+                <th:block th:each="user,i : ${users}">
                     <tr>
                         <!--/*@thymesVar id="id" type="com.bootstrap.springboot.domain.User"*/-->
                         <td th:utext="${user.id}"></td>
@@ -32,10 +32,11 @@
                                 Edit
                             </button>
                         </td>
-                        <td><form action="#" th:action="@{|/admin/delete/${user.id}|}" method="post">
-                            <button type="submit" class="btn btn-info btn-lg">Delete User
-                            </button>
-                        </form>
+                        <td>
+                            <form action="#" th:action="@{|/admin/delete/${user.id}|}" method="post">
+                                <button type="submit" class="btn btn-info btn-lg">Delete User
+                                </button>
+                            </form>
                         </td>
                     </tr>
                     <!-- Modal -->
@@ -63,18 +64,18 @@
                                         ></label></div>
                                         <div class="col-md col-md-offset-4"><label>Email<input class="form-control"
                                                                                                type="text"
-                                                                                               th:field="*{email}"
-                                                                                               th:value="${user.email}"/></label>
+                                                                                               th:name="email"
+                                                                                               th:attr="value=${user.email}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Login<input class="form-control"
                                                                                                type="text"
-                                                                                               th:field="*{login}"
+                                                                                               th:name="login"
                                                                                                th:value="${user.login}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Password<input
                                                 class="form-control"
                                                 type="password"
-                                                th:field="*{password}" th:value="${user.password}"/></label>
+                                                th:name="password" th:value="${user.password}"/></label>
                                         </div>
                                         <div class="col-md-5 col-md-offset-4"><label>Role</label>
                                             <select class="form-control" multiple size="2" th:field="*{roles}">
