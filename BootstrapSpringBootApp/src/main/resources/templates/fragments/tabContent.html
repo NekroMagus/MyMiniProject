@@ -63,23 +63,23 @@
                                         ></label></div>
                                         <div class="col-md col-md-offset-4"><label>Email<input class="form-control"
                                                                                                type="text"
-                                                                                               th:field="${us.email}"
+                                                                                               th:field="*{email}"
                                                                                                th:value="${user.email}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Login<input class="form-control"
                                                                                                type="text"
-                                                                                               name="login"
+                                                                                               th:field="*{login}"
                                                                                                th:value="${user.login}"/></label>
                                         </div>
                                         <div class="col-md col-md-offset-4"><label>Password<input
                                                 class="form-control"
                                                 type="password"
-                                                name="password" th:value="${user.password}"/></label>
+                                                th:field="*{password}" th:value="${user.password}"/></label>
                                         </div>
                                         <div class="col-md-5 col-md-offset-4"><label>Role</label>
-                                            <select class="form-control" multiple size="2">
+                                            <select class="form-control" multiple size="2" th:field="*{roles}">
                                                 <th:block th:each="rol:${role}">
-                                                    <option th:text="${rol.name}">ADMIN</option>
+                                                    <option th:value="${rol.name}" th:text="${rol.name}">ADMIN</option>
                                                 </th:block>
                                             </select>
                                         </div>
