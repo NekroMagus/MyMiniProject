@@ -1,4 +1,4 @@
-package com.ajax.bootstrap.dao;
+package com.ajax.bootstrap.repository;
 
 import com.ajax.bootstrap.domain.Role;
 

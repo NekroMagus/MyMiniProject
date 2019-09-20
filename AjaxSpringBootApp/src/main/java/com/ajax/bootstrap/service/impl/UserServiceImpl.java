@@ -1,6 +1,6 @@
 package com.ajax.bootstrap.service.impl;
 
-import com.ajax.bootstrap.dao.UserDao;
+import com.ajax.bootstrap.repository.UserDao;
 import com.ajax.bootstrap.domain.User;
 import com.ajax.bootstrap.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

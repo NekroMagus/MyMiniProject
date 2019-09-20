@@ -1,6 +1,6 @@
-package com.ajax.bootstrap.dao.impl;
+package com.ajax.bootstrap.repository.impl;
 
-import com.ajax.bootstrap.dao.UserDao;
+import com.ajax.bootstrap.repository.UserDao;
 import com.ajax.bootstrap.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;

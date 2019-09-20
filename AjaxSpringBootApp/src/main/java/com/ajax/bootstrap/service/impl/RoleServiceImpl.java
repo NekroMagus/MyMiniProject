@@ -1,6 +1,6 @@
 package com.ajax.bootstrap.service.impl;
 
-import com.ajax.bootstrap.dao.RoleDao;
+import com.ajax.bootstrap.repository.RoleDao;
 import com.ajax.bootstrap.domain.Role;
 import com.ajax.bootstrap.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

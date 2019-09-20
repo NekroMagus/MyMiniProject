@@ -1,7 +1,8 @@
-package com.bootstrap.springboot.service;
+package com.bootstrap.springboot.service.impl;
 
 import com.bootstrap.springboot.repository.RoleDao;
 import com.bootstrap.springboot.domain.Role;
+import com.bootstrap.springboot.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
