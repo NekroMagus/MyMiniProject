@@ -3,12 +3,14 @@ package com.ajax.bootstrap.dao.impl;
 import com.ajax.bootstrap.dao.UserDao;
 import com.ajax.bootstrap.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
+@Repository
 public class UserDaoImpl implements UserDao {
 
     @Autowired
