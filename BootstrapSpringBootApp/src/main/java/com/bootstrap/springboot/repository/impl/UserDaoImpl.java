@@ -1,6 +1,7 @@
-package com.bootstrap.springboot.dao;
+package com.bootstrap.springboot.repository.impl;
 
 import com.bootstrap.springboot.domain.User;
+import com.bootstrap.springboot.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

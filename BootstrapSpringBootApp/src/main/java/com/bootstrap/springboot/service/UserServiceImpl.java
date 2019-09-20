@@ -1,6 +1,6 @@
 package com.bootstrap.springboot.service;
 
-import com.bootstrap.springboot.dao.UserDao;
+import com.bootstrap.springboot.repository.UserDao;
 import com.bootstrap.springboot.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
