@@ -1,4 +1,4 @@
-package com.bootstrap.springboot.dao;
+package com.bootstrap.springboot.repository;
 
 import com.bootstrap.springboot.domain.User;
 

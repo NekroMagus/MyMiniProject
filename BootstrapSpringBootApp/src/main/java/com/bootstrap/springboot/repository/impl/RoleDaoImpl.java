@@ -1,6 +1,7 @@
-package com.bootstrap.springboot.dao;
+package com.bootstrap.springboot.repository.impl;
 
 import com.bootstrap.springboot.domain.Role;
+import com.bootstrap.springboot.repository.RoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

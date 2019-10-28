@@ -15,6 +15,6 @@ public class MainController {
 
     @GetMapping("/index")
     public String getIngexPage() {
-        return "insex";
+        return "index";
     }
 }

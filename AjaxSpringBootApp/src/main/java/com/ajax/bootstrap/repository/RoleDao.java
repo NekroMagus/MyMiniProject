@@ -1,6 +1,6 @@
-package com.bootstrap.springboot.dao;
+package com.ajax.bootstrap.repository;
 
-import com.bootstrap.springboot.domain.Role;
+import com.ajax.bootstrap.domain.Role;
 
 import java.util.List;
 

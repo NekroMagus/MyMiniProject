@@ -1,4 +1,4 @@
-package com.bootstrap.springboot.security;
+package com.ajax.bootstrap.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,38 +14,38 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 public class SpringSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(getUserDetailsService()).passwordEncoder(getEncoder());
-    }
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").anonymous()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .antMatchers("/static/**").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login").permitAll()
-                .successHandler(getSuccessAuthentication())
+                .successHandler(getAuthenticationSuccessHandler())
                 .and()
-                .logout()
-                .permitAll();
+                .logout().permitAll();
+    }
+
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(getUserDetailsService()).passwordEncoder(getPasswordEncoder());
     }
 
     @Bean
-    public PasswordEncoder getEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public UserDetailsService getUserDetailsService() {
+    public UserDetailsService getUserDetailsService()  {
         return new UserDetailsServiceImpl();
     }
 
     @Bean
-    public AuthenticationSuccessHandler getSuccessAuthentication() {
-        return new AuthenticationSecurity();
+    public PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler getAuthenticationSuccessHandler() {
+        return new AuthSuccess();
     }
 }
