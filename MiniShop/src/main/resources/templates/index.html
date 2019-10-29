@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/style.css"/>
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+</head>
+<body>
+<header>
+    <div class="container" style="height: 100%;">
+        <div
+                class="d-flex align-items-center justify-content-end"
+                style="height: 100%;"
+        >
+            <h1>КРУТОЙ МАГАЗИН</h1>
+        </div>
+    </div>
+</header>
+<div class="info-panel">0</div>
+<main class="main">
+    <div class="container">
+        <div class="main__inner">
+            <!-- aside filter -->
+            <aside class="">
+                <div class="catalog-filter">
+                    <div class="catalog-filter__inner">
+                        <!-- form -->
+                        <form id="formCatalogFilter" action="">
+                            <!-- slider -->
+                            <div class="filter-group slider">
+                                <div class="slider__inner">
+                                    <!-- slider__price-inputs -->
+                                    <div class="slider__price-inputs">
+                                        <div class="slider_price-group">
+                                            <span>от</span>
+                                            <input
+                                                    class="slider__price-input"
+                                                    type="number"
+                                                    name="pricemin"
+                                                    id="id_priceInputMin"
+                                            />
+                                        </div>
+
+                                        <div class="slider_price-group">
+                                            <span>до</span>
+                                            <input
+                                                    class="slider__price-input"
+                                                    type="number"
+                                                    name="pricemax"
+                                                    id="id_priceInputMax"
+                                            />
+                                        </div>
+                                    </div>
+                                    <!-- slider__price-inputs -->
+
+                                    <!-- slider__track-box -->
+                                    <div class="slider__track-box">
+                                        <div id="id_sliderTrack" class="slider__track">
+                                            <div
+                                                    id="id_sliderHandleMin"
+                                                    class="slider__handle"
+                                            ></div>
+                                            <div
+                                                    id="id_sliderHandleMax"
+                                                    class="slider__handle"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                    <!-- slider__track-box -->
+                                </div>
+                            </div>
+                            <!-- slider -->
+                            <hr/>
+                            <!-- models -->
+                            <div class="filter-group models">
+                                <div class="models__left-col">
+                                    <label class="checkbox-label" for="model1"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model1"
+                                    />Nokia</label
+                                    >
+                                    <label class="checkbox-label" for="model2"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model2"
+                                    />Samsung</label
+                                    >
+                                    <label class="checkbox-label" for="model3"
+                                    ><input type="checkbox" name="" id="model3"/>HP</label
+                                    >
+                                </div>
+                                <div class="models__right-col">
+                                    <label class="checkbox-label" for="model4"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model4"
+                                    />Asus</label
+                                    >
+                                    <label class="checkbox-label" for="model5"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model5"
+                                    />Xiaomi</label
+                                    >
+                                    <label class="checkbox-label" for="model6"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model6"
+                                    />Huawei</label
+                                    >
+                                </div>
+                            </div>
+                            <!-- models -->
+
+                            <div style="padding: 15px 0; text-align: center;">
+                                <button class="btn btn-success" id="testButton">
+                                    test button
+                                </button>
+                            </div>
+                        </form>
+                        <!-- vertical track -->
+                        <div id="id_verticalTrack" class="catalog-filter__v-track">
+                            <div id="id_showModelsBtn" class="show-models-btn hidden">
+                                <span>Показать</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- section show results -->
+            <section class="search-result__section">
+                <!-- select -->
+                <div class="sellers-phones-group">
+                    <select class="sellers-phone-numbers">
+                        <option disabled selected>Выберите телефон продавца</option>
+                        <option class="seller-phone-number">+97774562314</option>
+                        <option class="seller-phone-number">+17774562314</option>
+                        <option class="seller-phone-number">+27774562314</option>
+                        <option class="seller-phone-number">+37774562314</option>
+                        <option class="seller-phone-number">+57774562314</option>
+                        <option class="seller-phone-number">+67774562314</option>
+                    </select>
+
+                    <input class="btn btn-success" type="submit" value="искать">
+                </div>
+                <hr/>
+                <!-- search-result__inner -->
+                <div class="search-result__inner">
+                    <div id="id_searchResultContainer">
+                        <ul id="id_productList" class="product-list">
+                            <li class="product-list__item">
+                                <div class="product-list__item-number">sample</div>
+                                <div class="product-list__item-description">sample</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+<script src="../static/js/catalog-filter2.js" defer></script>
+<script src="../static/js/show-search-results.js" defer></script>
+</body>
+</html>
