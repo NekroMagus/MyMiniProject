@@ -19,7 +19,7 @@ public class Seller {
 
     private String phone;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "seller")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "seller", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Product> productList;
 
     @Override

@@ -1,7 +1,7 @@
-package com.nekromagus.github.repository;
+package com.nekromagus.github.dao;
 
 import com.nekromagus.github.domain.Seller;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SellerRepo extends JpaRepository<Seller, Long> {
+public interface SellerDao extends JpaRepository<Seller, Long> {
 }

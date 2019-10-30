@@ -2,7 +2,7 @@ package com.nekromagus.github.config;
 
 import com.nekromagus.github.domain.Product;
 import com.nekromagus.github.domain.Seller;
-import com.nekromagus.github.repository.SellerRepo;
+import com.nekromagus.github.dao.SellerDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +15,10 @@ import java.util.Random;
  * Класс для заполнения базы данных случайными продавцами и товарами
  */
 @Component
-public class DbConfig {
+public class DbInit {
 
     @Autowired
-    private SellerRepo repo;
+    private SellerDao dao;
 
     private Random random = new Random();
     private String[] allPhones = {"+79998887766", "+78889995544", "+76669998877", "+71112223344"};
@@ -41,7 +41,7 @@ public class DbConfig {
                 allProducts.add(product);
             }
             seller.setProductList(allProducts);
-            repo.save(seller);
+            dao.save(seller);
         }
     }
 }
