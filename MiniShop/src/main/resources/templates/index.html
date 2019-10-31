@@ -6,23 +6,35 @@
     <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Найти всех</h1>
+<h1>Поиск всех:</h1>
 <form id="searchAll">
-    <button>Найти все товары</button>
+    <button>Найти</button>
 </form>
 
-<h1>Поиск по 1 критерию</h1>
+<h1>Поиск по 1 критерию:</h1>
 <form id="searchLess">
-    <label for="search-less">Поиск по максимальному значению</label>
+    <label for="search-less">Поиск до максимальной суммы</label>
     <input id="search-less" type="number" required/>
 </form>
 
 <form id="searchGreater">
-    <label for="search-greater">Поиск по минимальному значению</label>
+    <label for="search-greater">Поиск от минимальной суммы</label>
     <input id="search-greater" type="number" required/>
 </form>
 
-<h1>Поиск по нескольким критериям</h1>
+<h4>Поиск по модели:</h4>
+<form id="searchModel">
+    <input id="Samsung" type="checkbox" value="Samsung" name="Samsung"/>
+    <label for="Samsung">Samsung</label>
+
+    <input id="Apple" type="checkbox" value="Apple" name="Apple"/>
+    <label for="Apple">Apple</label>
+
+    <input id="Nokia" type="checkbox" value="Nokia" name="Nokia"/>
+    <label for="Nokia">Nokia</label>
+</form>
+
+<h1>Поиск по нескольким критериям:</h1>
 <p>Поиск в пределах суммы:</p>
 <form id="searchBetween">
     <label for="search-min">От</label>

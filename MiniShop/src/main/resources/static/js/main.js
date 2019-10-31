@@ -23,6 +23,17 @@ $(document).ready(function () {
     });
 });
 
+
+$(document).ready(function () {
+    $('#searchModel').on('change',function () {
+        let search = {model: []};
+        $('#searchModel input:checked').each(function() {
+            search.model.push($(this).attr('name'));
+        });
+        submitAjax("/search/model", search);
+    });
+});
+
 $(document).ready(function () {
     $('#searchBetween').submit(event => {
         event.preventDefault();

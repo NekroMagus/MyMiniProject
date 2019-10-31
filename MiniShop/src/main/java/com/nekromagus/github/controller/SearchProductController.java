@@ -5,6 +5,7 @@ import com.nekromagus.github.dto.JsonSearchCriteria;
 import com.nekromagus.github.dto.JsonResponseProduct;
 import com.nekromagus.github.dao.ProductDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class SearchProductController {
     @PostMapping("/maxPrice")
     public List<JsonResponseProduct> getProductsWithMaxPrice(@RequestBody JsonSearchCriteria criteria) {
         resp = new ArrayList<>();
-        List<Product> products = dao.findProductsByPriceLessThanEqual(criteria.getMaxPrice());
+        List<Product> products = dao.findByPriceLessThanEqual(criteria.getMaxPrice());
         for (Product p : products) {
             resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
         }
@@ -54,9 +55,23 @@ public class SearchProductController {
     @PostMapping("/minPrice")
     public List<JsonResponseProduct> getProductsWithMinPrice(@RequestBody JsonSearchCriteria criteria) {
         resp = new ArrayList<>();
-        List<Product> products = dao.findProductsByPriceGreaterThanEqual(criteria.getMinPrice());
+        List<Product> products = dao.findByPriceGreaterThanEqual(criteria.getMinPrice());
         for (Product p : products) {
             resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
+        }
+        return resp;
+    }
+    /*
+           Поиск по модели
+    */
+    @PostMapping("/model")
+    public List<JsonResponseProduct> getProductsByModel(@RequestBody JsonSearchCriteria criteria) {
+        resp = new ArrayList<>();
+        List<Product> products = dao.findAll();
+        for (Product p : products) {
+            if(criteria.getModel().contains(p.getModel())){
+                resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
+            }
         }
         return resp;
     }
@@ -66,7 +81,7 @@ public class SearchProductController {
     @PostMapping("/betweenPrice")
     public List<JsonResponseProduct> getProductsBetweenPrice(@RequestBody JsonSearchCriteria criteria) {
         resp = new ArrayList<>();
-        List<Product> products = dao.findProductsByPriceBetween(criteria.getMinPrice(), criteria.getMaxPrice());
+        List<Product> products = dao.findByPriceBetween(criteria.getMinPrice(), criteria.getMaxPrice());
         for (Product p : products) {
             resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
         }
