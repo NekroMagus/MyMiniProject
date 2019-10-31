@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RestController for search of {@link Product}
+ */
 @RestController
 @RequestMapping("/search")
 public class SearchProductController {
@@ -21,7 +24,7 @@ public class SearchProductController {
 
     /*
         Поиск всех продуктов
-     */
+    */
     @PostMapping("/all")
     public List<JsonResponseProduct> getAllProducts() {
         resp = new ArrayList<>();
