@@ -7,29 +7,29 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('#searchGreater').submit(event => {
         event.preventDefault();
         let search = {};
         search['minPrice'] = $('#search-greater').val();
-        submitAjax("/search/minPrice",search);
+        submitAjax("/search/minPrice", search);
     });
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('#searchAll').submit(event => {
         event.preventDefault();
-        submitAjax("/search/all",null);
+        submitAjax("/search/all", null);
     });
 });
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('#searchBetween').submit(event => {
         event.preventDefault();
         let search = {};
         search['minPrice'] = $('#search-min').val();
         search['maxPrice'] = $('#search-max').val();
-        submitAjax("/search/betweenPrice",search);
+        submitAjax("/search/betweenPrice", search);
     });
 });
 
@@ -42,7 +42,12 @@ function submitAjax(url, data) {
         cache: false,
         timeout: 600000,
         success: (data) => {
-            let json = "<h4>Результат поиска</h4><p>"+JSON.stringify(data,null,4)+"</p>";
+            let json = "<h4>Результат поиска</h4>";
+            if (data.length === 0) {
+                json += "<p>" + "Ничего не найдено" + "</p>";
+            } else {
+                json += "<p>" + JSON.stringify(data, null, 4) + "</p>";
+            }
             $('#feedback').html(json);
         },
         error: (err) => {
