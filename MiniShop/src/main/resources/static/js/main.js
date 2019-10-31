@@ -1,21 +1,44 @@
 $(document).ready(function () {
-    $("#search").submit(function (event) {
+    $("#searchLess").submit(function (event) {
         event.preventDefault();
-        getPriceAjax();
+        let search = {};
+        search['maxPrice'] = $('#search-less').val();
+        submitAjax("/search/maxPrice", search);
     });
 });
 
-function getPriceAjax() {
+$(document).ready(function(){
+    $('#searchGreater').submit(event => {
+        event.preventDefault();
+        let search = {};
+        search['minPrice'] = $('#search-greater').val();
+        submitAjax("/search/minPrice",search);
+    });
+});
 
-    let search = {};
-    search['price'] = $('#search-price').val();
+$(document).ready(function(){
+    $('#searchAll').submit(event => {
+        event.preventDefault();
+        submitAjax("/search/all",null);
+    });
+});
 
+$(document).ready(function(){
+    $('#searchBetween').submit(event => {
+        event.preventDefault();
+        let search = {};
+        search['minPrice'] = $('#search-min').val();
+        search['maxPrice'] = $('#search-max').val();
+        submitAjax("/search/betweenPrice",search);
+    });
+});
+
+function submitAjax(url, data) {
     $.ajax({
         type: "POST",
         contentType: "application/json",
-        url: "/search",
-        data: JSON.stringify(search),
-        dataType: 'json',
+        url: url,
+        data: JSON.stringify(data),
         cache: false,
         timeout: 600000,
         success: (data) => {

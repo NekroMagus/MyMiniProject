@@ -6,9 +6,30 @@
     <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<form id ="search">
-    <label for="search-price">Введите масимальную сумму</label>
-    <input id="search-price" type="text"/>
+<h1>Найти всех</h1>
+<form id="searchAll">
+    <button>Найти все товары</button>
+</form>
+
+<h1>Поиск по 1 критерию</h1>
+<form id="searchLess">
+    <label for="search-less">Поиск по максимальному значению</label>
+    <input id="search-less" type="number" required/>
+</form>
+
+<form id="searchGreater">
+    <label for="search-greater">Поиск по минимальному значению</label>
+    <input id="search-greater" type="number" required/>
+</form>
+
+<h1>Поиск по нескольким критериям</h1>
+<p>Поиск в пределах суммы:</p>
+<form id="searchBetween">
+    <label for="search-min">От</label>
+    <input id="search-min" type="number" required/>
+    <label for="search-max">До</label>
+    <input id="search-max" type="number" required/>
+    <button>Найти</button>
 </form>
 
 <div id="feedback"></div>
