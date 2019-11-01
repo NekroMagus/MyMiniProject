@@ -15,6 +15,9 @@ import java.util.List;
 
 /**
  * RestController for search of {@link Product}
+ *
+ * @author Igor Fliginskikh
+ * @version 1.0
  */
 @RestController
 @RequestMapping("/search")
@@ -126,5 +129,15 @@ public class SearchProductController {
             }
         }
         return resp;
+    }
+
+    @PostMapping("/min")
+    public int getMinPrice() {
+        return dao.findByMinPrice();
+    }
+
+    @PostMapping("/max")
+    public int getMaxPrice() {
+        return dao.findByMaxPrice();
     }
 }

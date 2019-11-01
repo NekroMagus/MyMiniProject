@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Controller for index page
+ *
+ * @author Igor Fliginskikh
+ * @version 1.0
  */
 
 @Controller
