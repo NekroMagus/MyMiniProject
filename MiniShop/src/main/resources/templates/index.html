@@ -12,6 +12,7 @@
 </form>
 
 <h1>Поиск по 1 критерию:</h1>
+<h4>Поиск по цене:</h4>
 <form id="searchLess">
     <label for="search-less">Поиск до максимальной суммы</label>
     <input id="search-less" type="number" required/>
@@ -34,14 +35,40 @@
     <label for="Nokia">Nokia</label>
 </form>
 
+<h4>Поиск по телефону продавца:</h4>
+<form id="sellerPhone">
+    <label for="phone">Введите телефон:</label>
+    <input id="phone" type="text">
+</form>
+
 <h1>Поиск по нескольким критериям:</h1>
-<p>Поиск в пределах суммы:</p>
+<h4>Поиск в пределах суммы:</h4>
 <form id="searchBetween">
     <label for="search-min">От</label>
     <input id="search-min" type="number" required/>
     <label for="search-max">До</label>
     <input id="search-max" type="number" required/>
     <button>Найти</button>
+</form>
+
+<h4>Поиск по модели, цене и телефону продавца</h4>
+<form id="searchAllCriteria">
+    <label for="minPrice">От</label>
+    <input id="minPrice" type="number" min="0" required/>
+    <label for="maxPrice">До</label>
+    <input id="maxPrice" type="number" min="0" required/>
+    <br>
+    <label for="phoneSeller">Телефон продавца</label>
+    <input id="phoneSeller" type="text">
+    <br>
+    <input id="Samsung2" type="checkbox" value="Samsung" name="Samsung"/>
+    <label for="Samsung2">Samsung</label>
+
+    <input id="Apple2" type="checkbox" value="Apple" name="Apple"/>
+    <label for="Apple2">Apple</label>
+
+    <input id="Nokia2" type="checkbox" value="Nokia" name="Nokia"/>
+    <label for="Nokia2">Nokia</label>
 </form>
 
 <div id="feedback"></div>

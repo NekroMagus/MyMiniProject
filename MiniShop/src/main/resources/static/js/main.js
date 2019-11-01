@@ -35,6 +35,15 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('#sellerPhone').submit(event => {
+        event.preventDefault();
+        let search = {};
+        search['phoneSeller'] = $('#phone').val();
+        submitAjax('/search/phone',search);
+    });
+});
+
+$(document).ready(function () {
     $('#searchBetween').submit(event => {
         event.preventDefault();
         let search = {};
@@ -43,6 +52,23 @@ $(document).ready(function () {
         submitAjax("/search/betweenPrice", search);
     });
 });
+
+$(document).ready(function () {
+    $('#searchAllCriteria').change(event => {
+        event.preventDefault();
+        let search = {
+            minPrice: $('#minPrice').val(),
+            maxPrice: $('#maxPrice').val(),
+            phoneSeller: $('#phoneSeller').val(),
+            model:[]
+        };
+        $('#searchAllCriteria input:checked').each(function() {
+            search.model.push($(this).attr('name'));
+        });
+        submitAjax('/search/allCriteria', search);
+    });
+});
+
 
 function submitAjax(url, data) {
     $.ajax({
