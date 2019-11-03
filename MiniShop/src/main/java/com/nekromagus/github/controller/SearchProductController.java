@@ -5,10 +5,9 @@ import com.nekromagus.github.domain.Product;
 import com.nekromagus.github.dto.JsonResponseProduct;
 import com.nekromagus.github.dto.JsonSearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +28,11 @@ public class SearchProductController {
     /*
         Поиск всех продуктов
     */
-    @PostMapping("/all")
+    @GetMapping("/all")
     public List<JsonResponseProduct> getAllProducts() {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findAll();
-        for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
-        }
+        setJsonResponseProduct(products,resp);
         return resp;
     }
 
@@ -46,9 +43,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsWithMaxPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceLessThanEqual(criteria.getMaxPrice());
-        for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
-        }
+        setJsonResponseProduct(products,resp);
         return resp;
     }
 
@@ -59,9 +54,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsWithMinPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceGreaterThanEqual(criteria.getMinPrice());
-        for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
-        }
+        setJsonResponseProduct(products,resp);
         return resp;
     }
 
@@ -86,10 +79,8 @@ public class SearchProductController {
     @PostMapping("/phone")
     public List<JsonResponseProduct> getProductsByPhone(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
-        List<Product> products = dao.findProductsBySellerPhones(criteria.getPhoneSeller());
-        for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
-        }
+        List<Product> products = dao.findBySellerPhone(criteria.getPhoneSeller());
+        setJsonResponseProduct(products,resp);
         return resp;
     }
 
@@ -100,9 +91,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsBetweenPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceBetween(criteria.getMinPrice(), criteria.getMaxPrice());
-        for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
-        }
+        setJsonResponseProduct(products,resp);
         return resp;
     }
     /*
@@ -131,13 +120,19 @@ public class SearchProductController {
         return resp;
     }
 
-    @PostMapping("/min")
+    @GetMapping("/min")
     public int getMinPrice() {
         return dao.findByMinPrice();
     }
 
-    @PostMapping("/max")
+    @GetMapping("/max")
     public int getMaxPrice() {
         return dao.findByMaxPrice();
+    }
+
+    private void setJsonResponseProduct(List<Product> products, List<JsonResponseProduct> resp) {
+        for (Product p : products) {
+            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
+        }
     }
 }

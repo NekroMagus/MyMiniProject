@@ -3,7 +3,7 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['maxPrice'] = $('#search-less').val();
-        submitAjax("/search/maxPrice", search);
+        submitAjax("/search/maxPrice","POST", search);
     });
 });
 
@@ -12,25 +12,25 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['minPrice'] = $('#search-greater').val();
-        submitAjax("/search/minPrice", search);
+        submitAjax("/search/minPrice","POST", search);
     });
 });
 
 $(document).ready(function () {
     $('#searchAll').submit(event => {
         event.preventDefault();
-        submitAjax("/search/all", null);
+        submitAjax("/search/all","GET", null);
     });
 });
 
 
 $(document).ready(function () {
-    $('#searchModel').on('change',function () {
+    $('#searchModel').on('change', function () {
         let search = {model: []};
-        $('#searchModel input:checked').each(function() {
+        $('#searchModel input:checked').each(function () {
             search.model.push($(this).attr('name'));
         });
-        submitAjax("/search/model", search);
+        submitAjax("/search/model","POST", search);
     });
 });
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['phoneSeller'] = $('#phone').val();
-        submitAjax('/search/phone',search);
+        submitAjax('/search/phone',"POST", search);
     });
 });
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
         let search = {};
         search['minPrice'] = $('#search-min').val();
         search['maxPrice'] = $('#search-max').val();
-        submitAjax("/search/betweenPrice", search);
+        submitAjax("/search/betweenPrice","POST", search);
     });
 });
 
@@ -60,19 +60,19 @@ $(document).ready(function () {
             minPrice: $('#minPrice').val(),
             maxPrice: $('#maxPrice').val(),
             phoneSeller: $('#phoneSeller').val(),
-            model:[]
+            model: []
         };
-        $('#searchAllCriteria input:checked').each(function() {
+        $('#searchAllCriteria input:checked').each(function () {
             search.model.push($(this).attr('name'));
         });
-        submitAjax('/search/allCriteria', search);
+        submitAjax('/search/allCriteria',"POST", search);
     });
 });
 
 
-function submitAjax(url, data) {
+function submitAjax(url, type, data) {
     $.ajax({
-        type: "POST",
+        type: type,
         contentType: "application/json",
         url: url,
         data: JSON.stringify(data),
