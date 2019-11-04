@@ -5,8 +5,6 @@ import com.nekromagus.github.domain.Product;
 import com.nekromagus.github.dto.JsonResponseProduct;
 import com.nekromagus.github.dto.JsonSearchCriteria;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -32,7 +30,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getAllProducts() {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findAll();
-        setJsonResponseProduct(products,resp);
+        setJsonResponseProduct(products, resp);
         return resp;
     }
 
@@ -43,7 +41,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsWithMaxPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceLessThanEqual(criteria.getMaxPrice());
-        setJsonResponseProduct(products,resp);
+        setJsonResponseProduct(products, resp);
         return resp;
     }
 
@@ -54,7 +52,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsWithMinPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceGreaterThanEqual(criteria.getMinPrice());
-        setJsonResponseProduct(products,resp);
+        setJsonResponseProduct(products, resp);
         return resp;
     }
 
@@ -80,7 +78,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsByPhone(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findBySellerPhone(criteria.getPhoneSeller());
-        setJsonResponseProduct(products,resp);
+        setJsonResponseProduct(products, resp);
         return resp;
     }
 
@@ -91,7 +89,7 @@ public class SearchProductController {
     public List<JsonResponseProduct> getProductsBetweenPrice(@RequestBody JsonSearchCriteria criteria) {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceBetween(criteria.getMinPrice(), criteria.getMaxPrice());
-        setJsonResponseProduct(products,resp);
+        setJsonResponseProduct(products, resp);
         return resp;
     }
     /*
@@ -107,10 +105,10 @@ public class SearchProductController {
             if (criteria.getModel().size() == 0 && criteria.getPhoneSeller().equals("")) {
                 resp.add(jrp);
             } else if (p.getSeller().getPhone().equals(criteria.getPhoneSeller())
-                    && criteria.getModel().contains(p.getModel())){
+                    && criteria.getModel().contains(p.getModel())) {
                 resp.add(jrp);
             } else if (p.getSeller().getPhone().equals(criteria.getPhoneSeller())
-                    && criteria.getModel().size() == 0){
+                    && criteria.getModel().size() == 0) {
                 resp.add(jrp);
             } else if (criteria.getModel().contains(p.getModel())
                     && criteria.getPhoneSeller().equals("")) {

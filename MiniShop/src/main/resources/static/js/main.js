@@ -3,7 +3,7 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['maxPrice'] = $('#search-less').val();
-        submitAjax("/search/maxPrice","POST", search);
+        submitAjax("/search/maxPrice", "POST", search);
     });
 });
 
@@ -12,14 +12,14 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['minPrice'] = $('#search-greater').val();
-        submitAjax("/search/minPrice","POST", search);
+        submitAjax("/search/minPrice", "POST", search);
     });
 });
 
 $(document).ready(function () {
     $('#searchAll').submit(event => {
         event.preventDefault();
-        submitAjax("/search/all","GET", null);
+        submitAjax("/search/all", "GET", null);
     });
 });
 
@@ -30,7 +30,7 @@ $(document).ready(function () {
         $('#searchModel input:checked').each(function () {
             search.model.push($(this).attr('name'));
         });
-        submitAjax("/search/model","POST", search);
+        submitAjax("/search/model", "POST", search);
     });
 });
 
@@ -39,7 +39,7 @@ $(document).ready(function () {
         event.preventDefault();
         let search = {};
         search['phoneSeller'] = $('#phone').val();
-        submitAjax('/search/phone',"POST", search);
+        submitAjax('/search/phone', "POST", search);
     });
 });
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
         let search = {};
         search['minPrice'] = $('#search-min').val();
         search['maxPrice'] = $('#search-max').val();
-        submitAjax("/search/betweenPrice","POST", search);
+        submitAjax("/search/betweenPrice", "POST", search);
     });
 });
 
@@ -65,7 +65,7 @@ $(document).ready(function () {
         $('#searchAllCriteria input:checked').each(function () {
             search.model.push($(this).attr('name'));
         });
-        submitAjax('/search/allCriteria',"POST", search);
+        submitAjax('/search/allCriteria', "POST", search);
     });
 });
 

@@ -20,7 +20,7 @@ public class Product {
 
     private String model;
 
-    @ManyToOne(optional =false, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
+    @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     private Seller seller;
 
     @Override

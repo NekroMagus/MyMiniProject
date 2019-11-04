@@ -23,7 +23,7 @@ public interface ProductDao extends JpaRepository<Product, Long> {
 
 
     @Query("SELECT product FROM Product product WHERE product.seller.phone in :phone")
-    List<Product> findProductsBySellerPhones(@Param("phone")String phone);
+    List<Product> findProductsBySellerPhones(@Param("phone") String phone);
 
     List<Product> findBySellerPhone(String phone);
 
