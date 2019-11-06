@@ -6,9 +6,9 @@ CREATE TABLE seller
 
 CREATE TABLE product
 (
-  id        BIGSERIAL PRIMARY KEY,
-  price     INTEGER,
-  model     varchar(255),
+  id BIGSERIAL  PRIMARY KEY,
+  price INTEGER,
+  model varchar(255),
   seller_id BIGINT,
-  FOREIGN KEY (seller_id) REFERENCES seller (id)
+  FOREIGN KEY (seller_id) REFERENCES seller(id)
 );

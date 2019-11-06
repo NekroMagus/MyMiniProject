@@ -1,3 +1,4 @@
+"use strict";
 $(document).ready(function () {
     $("#searchLess").submit(function (event) {
         event.preventDefault();

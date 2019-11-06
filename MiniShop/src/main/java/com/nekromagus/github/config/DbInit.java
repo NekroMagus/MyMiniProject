@@ -1,6 +1,6 @@
 package com.nekromagus.github.config;
 
-import com.nekromagus.github.dao.SellerDao;
+import com.nekromagus.github.dao.seller.SellerDao;
 import com.nekromagus.github.domain.Product;
 import com.nekromagus.github.domain.Seller;
 import org.springframework.beans.factory.annotation.Autowired;

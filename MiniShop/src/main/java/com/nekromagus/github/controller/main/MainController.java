@@ -1,4 +1,4 @@
-package com.nekromagus.github.controller;
+package com.nekromagus.github.controller.main;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

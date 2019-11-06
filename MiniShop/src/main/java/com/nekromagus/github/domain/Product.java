@@ -1,8 +1,7 @@
 package com.nekromagus.github.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -20,6 +19,7 @@ public class Product {
 
     private String model;
 
+    @JsonBackReference
     @ManyToOne(optional = false, fetch = FetchType.EAGER, cascade = {CascadeType.MERGE})
     private Seller seller;
 

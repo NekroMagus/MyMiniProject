@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../static/css/search.css"/>
+</head>
+<body>
+<header>
+    <div class="container" style="height: 100%;">
+        <div
+                class="d-flex align-items-center justify-content-end"
+                style="height: 100%;"
+        >
+            <h1>ПОИСК ПРОДУКЦИИ</h1>
+        </div>
+    </div>
+</header>
+<main class="main">
+    <div class="container-fluid">
+        <div class="main__inner">
+            <!-- aside filter -->
+            <aside class="">
+                <div class="catalog-filter">
+                    <div class="catalog-filter__inner">
+                        <!-- form -->
+                        <form id="formCatalogFilter" action="">
+                            <!-- slider -->
+                            <div class="filter-group slider">
+                                <div class="slider__inner">
+                                    <!-- slider__price-inputs -->
+                                    <div class="slider__price-inputs">
+                                        <div class="slider_price-group">
+                                            <span>от</span>
+                                            <input
+                                                    class="slider__price-input"
+                                                    type="number"
+                                                    name="pricemin"
+                                                    id="id_priceInputMin"
+                                            />
+                                        </div>
+
+                                        <div class="slider_price-group">
+                                            <span>до</span>
+                                            <input
+                                                    class="slider__price-input"
+                                                    type="number"
+                                                    name="pricemax"
+                                                    id="id_priceInputMax"
+                                            />
+                                        </div>
+                                    </div>
+                                    <!-- slider__price-inputs -->
+
+                                    <!-- slider__track-box -->
+                                    <div class="slider__track-box">
+                                        <div id="id_sliderTrack" class="slider__track">
+                                            <div
+                                                    id="id_sliderHandleMin"
+                                                    class="slider__handle"
+                                            ></div>
+                                            <div
+                                                    id="id_sliderHandleMax"
+                                                    class="slider__handle"
+                                            ></div>
+                                            <div id="id_sliderRangeLine" class="sliderRangeLine"></div>
+                                        </div>
+                                    </div>
+                                    <!-- slider__track-box -->
+                                </div>
+                            </div>
+                            <!-- slider -->
+                            <hr/>
+                            <!-- models -->
+                            <div class="filter-group models">
+                                <div class="models__left-col">
+                                    <label class="checkbox-label" for="model1"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model1"
+                                    />Nokia</label
+                                    >
+                                    <label class="checkbox-label" for="model2"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model2"
+                                    />Samsung</label
+                                    >
+                                    <label class="checkbox-label" for="model3"
+                                    ><input type="checkbox" name="" id="model3"/>HP</label
+                                    >
+                                </div>
+                                <div class="models__right-col">
+                                    <label class="checkbox-label" for="model4"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model4"
+                                    />Asus</label
+                                    >
+                                    <label class="checkbox-label" for="model5"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model5"
+                                    />Xiaomi</label
+                                    >
+                                    <label class="checkbox-label" for="model6"
+                                    ><input
+                                            type="checkbox"
+                                            name=""
+                                            id="model6"
+                                    />Huawei</label
+                                    >
+                                </div>
+                            </div>
+                            <!-- models -->
+                        </form>
+                        <!-- vertical track -->
+                        <div id="id_verticalTrack" class="catalog-filter__v-track">
+                            <div id="id_showModelsBtn" class="show-models-btn hidden">
+                                <span>Показать</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- section show results -->
+            <section class="search-result__section">
+                <!-- select -->
+                <div class="sellers-phones-group">
+                    <input class="phone-number__input" size="24" type="tel" name="" id=""
+                           placeholder="Введите телефон продавца">
+                    <input class="btn btn-success" type="submit" value="искать">
+                </div>
+                <hr/>
+                <!-- search-result__inner -->
+                <div class="search-result__inner">
+                    <div id="id_searchResultContainer">
+                        <ul id="id_productList" class="product-list">
+                            <li class="product-list__item">
+                                <div class="product-list__item-number">sample</div>
+                                <div class="product-list__item-description">sample</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</main>
+
+<script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+<script type="module" src="../static/js/mainSearch.js" defer></script>
+</body>
+</html>

@@ -1,6 +1,6 @@
-package com.nekromagus.github.controller;
+package com.nekromagus.github.controller.search;
 
-import com.nekromagus.github.dao.ProductDao;
+import com.nekromagus.github.dao.product.ProductDao;
 import com.nekromagus.github.domain.Product;
 import com.nekromagus.github.dto.JsonResponseProduct;
 import com.nekromagus.github.dto.JsonSearchCriteria;
@@ -18,7 +18,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/search")
-public class SearchProductController {
+public class SearchProductRestController {
 
     @Autowired
     private ProductDao dao;
@@ -65,9 +65,10 @@ public class SearchProductController {
         List<Product> products = dao.findAll();
         for (Product p : products) {
             if (criteria.getModel().contains(p.getModel())) {
-                resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
+                resp.add(new JsonResponseProduct(p));
             }
         }
+        JsonResponseProduct jrp = new JsonResponseProduct(123, "", "");
         return resp;
     }
       /*
@@ -101,7 +102,7 @@ public class SearchProductController {
         List<JsonResponseProduct> resp = new ArrayList<>();
         List<Product> products = dao.findByPriceBetween(criteria.getMinPrice(), criteria.getMaxPrice());
         for (Product p : products) {
-            JsonResponseProduct jrp = new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone());
+            JsonResponseProduct jrp = new JsonResponseProduct(p);
             if (criteria.getModel().size() == 0 && criteria.getPhoneSeller().equals("")) {
                 resp.add(jrp);
             } else if (p.getSeller().getPhone().equals(criteria.getPhoneSeller())
@@ -130,7 +131,7 @@ public class SearchProductController {
 
     private void setJsonResponseProduct(List<Product> products, List<JsonResponseProduct> resp) {
         for (Product p : products) {
-            resp.add(new JsonResponseProduct(p.getPrice(), p.getModel(), p.getSeller().getPhone()));
+            resp.add(new JsonResponseProduct(p));
         }
     }
 }

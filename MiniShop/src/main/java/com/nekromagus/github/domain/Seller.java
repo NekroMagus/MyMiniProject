@@ -1,8 +1,8 @@
 package com.nekromagus.github.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
+import org.aspectj.lang.annotation.DeclareAnnotation;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,6 +19,7 @@ public class Seller {
 
     private String phone;
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "seller", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Product> productList;
 

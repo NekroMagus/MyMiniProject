@@ -1,4 +1,4 @@
-package com.nekromagus.github.dao;
+package com.nekromagus.github.dao.product;
 
 import com.nekromagus.github.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ProductDao extends JpaRepository<Product, Long> {
+
+    Product findById(long id);
 
     @Query(value = "SELECT min(p.price) FROM Product p", nativeQuery = true)
     int findByMinPrice();
